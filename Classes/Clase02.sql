@@ -16,9 +16,7 @@ last_name varchar(30)
 
 create table Film_actor (id_film_actor int NOT NULL AUTO_INCREMENT primary key,
 actor_id int, 
-film_id int,
-constraint FOREIGN key (actor_id) REFERENCES Actor(actor_id),
-constraint FOREIGN key (film_id) REFERENCES Film(film_id)
+film_id int
 );
 
 ALTER TABLE Film
@@ -26,6 +24,12 @@ ADD last_update varchar(30);
 
 ALTER TABLE Actor
 ADD last_update varchar(30); 
+
+ALTER TABLE Film_actor
+ADD FOREIGN KEY (actor_id) REFERENCES Actor(actor_id);
+
+ALTER TABLE Film_actor
+ADD FOREIGN KEY (film_id) REFERENCES Film(film_id)
 
 insert into Film(film_id, title, description, release_year, last_update) values (0, "Titanic", "Amor", 2009, "a");
 insert into Film(film_id, title, description, release_year, last_update) values (2, "WWZ", "Terror", 2017, "b");
